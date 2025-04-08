@@ -26,17 +26,17 @@ if df is not None:
         life_status_filter = st.sidebar.multiselect("Select Life Status", sorted(df["Life Status"].dropna().unique()))
         if life_status_filter:
             df = df[df["Life Status"].isin(life_status_filter)]
-
+    print('\n')
     if "Sex" in df.columns:
         sex_filter = st.sidebar.multiselect("Select Sex", sorted(df["Sex"].dropna().unique()))
         if sex_filter:
             df = df[df["Sex"].isin(sex_filter)]
-
+    print('\n')
     if "Colony Name" in df.columns:
         colony_filter = st.sidebar.multiselect("Select Colony Name", sorted(df["Colony Name"].dropna().unique()))
         if colony_filter:
             df = df[df["Colony Name"].isin(colony_filter)]
-    
+    print('\n')
     if "All Cohorts" in df.columns:
         cohort_options = sorted(df["All Cohorts"].dropna().unique()) + ["Not in any Cohort"]
         cohort_filter = st.sidebar.multiselect("Select All Cohorts", cohort_options)
@@ -45,8 +45,7 @@ if df is not None:
                 df = df[df["All Cohorts"].isna() | df["All Cohorts"].isin(cohort_filter)]
             else:
                 df = df[df["All Cohorts"].isin(cohort_filter)]
-    
-    # Updated Current Mating filter
+    print('\n')
     if "Current Mating" in df.columns:
         mating_filter = st.sidebar.multiselect("Select Mating Status", ["Mating", "Not Mating"])
         if "Mating" in mating_filter and "Not Mating" not in mating_filter:
