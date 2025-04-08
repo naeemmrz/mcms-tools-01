@@ -64,7 +64,7 @@ if df is not None:
         strains = df["Colony Name"].nunique()
         min_age = df["Age (Weeks)"].min()
         real_max_age = df["Age (Weeks)"].max()
-        max_age = real_max_age + 2  # Add a small buffer for y-axis only
+        max_age = real_max_age + 8  # Add a small buffer for y-axis only
         median_age = df["Age (Weeks)"].median()
         
         st.write(f"Filtered dataset includes {num_mice} mice across {strains} unique colonies, with ages ranging from {min_age} to {real_max_age} weeks (median age: {median_age} weeks).")
