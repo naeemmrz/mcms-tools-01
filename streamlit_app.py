@@ -63,10 +63,11 @@ if df is not None:
         num_mice = len(df)
         strains = df["Colony Name"].nunique()
         min_age = df["Age (Weeks)"].min()
-        max_age = df["Age (Weeks)"].max() + 12
+        real_max_age = df["Age (Weeks)"].max()
+        max_age = real_max_age + 2  # Add a small buffer for y-axis only
         median_age = df["Age (Weeks)"].median()
         
-        st.write(f"Filtered dataset includes {num_mice} mice across {strains} unique colonies, with ages ranging from {min_age} to {max_age} weeks (median age: {median_age} weeks).")
+        st.write(f"Filtered dataset includes {num_mice} mice across {strains} unique colonies, with ages ranging from {min_age} to {real_max_age} weeks (median age: {median_age} weeks).")
         
         fig, ax = plt.subplots(figsize=(7, 10))  # Adjusted plot size
         sns.violinplot(x="Colony Name", y="Age (Weeks)", data=df, inner=None, linewidth=1, width=0.1, ax=ax)  # Narrower violin plot
